@@ -1,0 +1,125 @@
+import random
+#1 - criar lista
+N = 10
+def criarLista(N):
+    lista = []
+    while N > 0:
+        lista.append(random.randint(1, 101))
+        N = N - 1
+    return lista
+#2 - ler lista
+def lerLista(N):
+    lista = []
+    while N > 0:
+        lista.append(int(input("Introduza um número inteiro:")))
+        N = N - 1
+    return lista
+#3 - soma
+def somarLista(lista):
+    res = 0
+    for carateres in lista:
+        res = res + carateres
+    return res
+#4 - media
+def mediadaLista(lista):
+    soma = 0
+    v = 0
+    for elementos in lista:
+        soma = soma + elementos
+        v = v + 1
+    media = soma / v
+    return media
+#5 - maior
+def maiordaLista(lista):
+    maior = 0
+    for elementos in lista:
+        if maior < elementos:
+            maior = elementos
+    return maior
+#6 - menor
+def menordaLista(lista):
+    menor = 100000000000000000
+    for elementos in lista:
+        if menor > elementos:
+            menor = elementos
+    return menor
+#7 - ordem crescente
+def estaOrdenadacres(lista):
+    n = 0
+    d = 0
+    s = 0
+    for elementos in lista:
+        if n <= elementos:
+            d = d + 1
+        s = s + 1
+        n = elementos
+    if s == d:
+        esta = "Sim"
+    else:
+        esta = "Não"
+    return esta
+#8 - ordem decrescente
+def estaOrdenadadecres(lista):
+    n = 100000000000000000000
+    d = 0
+    s = 0
+    for elementos in lista:
+        if n >= elementos:
+            d = d + 1
+        s = s + 1
+        n = elementos
+    if s == d:
+        esta = "Sim"
+    else:
+        esta = "Não"
+    return esta
+#9 - procura um elemento
+def procura(lista, elem):
+    s = 1
+    for elementos in lista:
+        if elementos == elem:
+            print("A posição do número " + str(elem) + " na lista é: " + str(s))
+        s = s + 1
+    return ""
+resposta = 10
+while resposta == 1 or resposta == 2 or resposta == 3 or resposta == 4 or resposta == 5 or resposta == 6 or resposta == 7 or resposta == 8 or resposta == 9 or resposta == 10:
+    resposta = int(input("""(1) Criar Lista
+                         (2) Ler Lista
+                         (3) Soma
+                         (4) Média
+                         (5) Maior
+                         (6) Menor
+                         (7) Está ordenada por ordem crescente
+                         (8) Está ordenada por ordem decrescente
+                         (9) Procura um elemento
+                         (0) Sair)"""))
+    if resposta == 1:
+        lista = criarLista(N)
+        print(lista)
+    if resposta == 2:
+        lista = lerLista(N)
+        print(lista)
+    if resposta == 3:
+        soma = somarLista(lista)
+        print(soma)
+    if resposta == 4:
+        media = mediadaLista(lista)
+        print(media)
+    if resposta == 5:
+        maior = maiordaLista(lista)
+        print(maior)
+    if resposta == 6:
+        menor = menordaLista(lista)
+        print(menor)
+    if resposta == 7:
+        ordcres = estaOrdenadacres(lista)
+        print(ordcres)
+    if resposta == 8:
+        orddecres = estaOrdenadadecres(lista)
+        print(orddecres)
+    if resposta == 9:
+        elem = int(input("Qual é o número que pretende procurar?"))
+        procur = procura(lista, elem)
+        print(procur)
+print(lista)
+    
