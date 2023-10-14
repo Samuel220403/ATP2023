@@ -1,0 +1,71 @@
+cinema1 = []
+#1
+def listar(cinema):
+    i = 1
+    for salas in cinema:
+        print("----------------------")
+        print("Sala " + str(i) + ": " + str(salas[2]))
+        print("----------------------")
+        i=i+1
+    return ""
+#2 e #3
+def disponivel(cinema, filme, lugar):
+    res = True
+    for sala in cinema:
+        if filme == sala[2]:
+            for lugares in sala[1]:
+                if lugar == lugares:
+                    res = False
+    return res
+
+def vendebilhete(cinema, filme, lugar):
+    for sala in cinema:
+        if filme == sala[2]:
+            sala[1].append(lugar)
+    return cinema
+#4
+def listadisponibilidades(cinema):
+    for sala in cinema:
+        print(sala[2] + " : ", end="")
+        print(sala[0] - len(sala[1]), end="")
+        print(" lugares disponíveis.")
+    return ""
+#5
+def inserirSala(cinema, sala):
+    res = 0
+    for salas in cinema:
+        if sala == salas:
+            res = 1
+    if res == 0:
+        cinema.append(sala)
+    return cinema
+
+resposta = 5
+while resposta == 1 or resposta == 2 or resposta == 3 or resposta == 4 or resposta == 5:
+    resposta = int(input("""(1) listar cinema
+                  (2) Vender bilhete
+                  (3) Disponibilidades
+                  (4) Nova sala
+                  (0) Sair"""))
+    if resposta == 1:
+        listar(cinema1)
+    if resposta == 2:
+        filme = str(input("Filme: "))
+        lugar = int(input("Lugar: "))
+        res = disponivel (cinema1, filme, lugar)
+        if res == True:
+            print("O lugar está livre.")
+            cinema1 = vendebilhete(cinema1, filme, lugar)
+        else:
+            print("O lugar está ocupado.")
+    if resposta == 3:
+        listadisponibilidades(cinema1)
+    if resposta == 4:
+        nlugares = 0
+        while nlugares < 1:
+            nlugares = int(input("Quantos lugares tem a sala?"))
+        vendidos = []
+        filme1 = str(input("Qual é o nome do filme?"))
+        sala = [nlugares, vendidos, filme1]
+        cinema1 = inserirSala(cinema1, sala)
+            
