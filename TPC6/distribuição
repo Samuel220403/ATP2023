@@ -1,0 +1,204 @@
+def leficheiro (ficheiro):
+    fbio = open(ficheiro)
+    for linhas in fbio:
+        i = 0
+        elementos = linhas.split(",")
+        while i < len(elementos):
+            print("|", elementos[i], end = " ")
+            i = i + 1
+    fbio.close()
+    return
+def calcds(ficheiro):
+    fd = 0
+    md = 0
+    f = 0
+    m = 0
+    fbio = open(ficheiro)
+    fbio.readline
+    for linhas in fbio:
+        elementos = linhas.split(",")
+        if elementos[-1] == "1":
+            if elementos[0] == "Female":
+                fd = fd + 1
+            else:
+                md = md + 1
+        f = f + 1
+        m = m + 1
+    print(fd, md)
+    pfem = float((fd/f) * 100)
+    pmasc = float((md/m) * 100)
+    print("A percentagem de mulheres doentes é: " + str(pfem) + "%")
+    print("A percentagem de homens doentes é: " + str(pmasc) + "%")
+    fbio.close()
+    res = [["Mulheres doentes",pfem], ["Homens doentes",pmasc]]
+    return res
+ficheiro = "P6 - dataset.csv"
+leficheiro(ficheiro)
+calcds(ficheiro)
+def calcdee(ficheiro):
+    e1 = 0
+    e2 = 0
+    e3 = 0
+    e4 = 0
+    e5 = 0
+    e6 = 0
+    e7 = 0
+    e8 = 0
+    e9 = 0
+    e10 = 0
+    e11 = 0
+    et = 0
+    fbio = open(ficheiro)
+    for linhas in fbio:
+        elementos = linhas.split(",")
+        et = et + 1
+        if elementos[-1] == "1":
+            if elementos[1] < 11:
+                e1 = e1 + 1
+            if elementos[1] < 25:
+                e2 = e2 + 1
+            if elementos[1] < 30:
+                e3 = e3 + 1
+            if elementos[1] < 35:
+                e4 = e4 + 1
+            if elementos[1] < 40:
+                e5 = e5 + 1
+            if elementos[1] < 45:
+                e6 = e6 + 1
+            if elementos[1] < 50:
+                e7 = e7 + 1
+            if elementos[1] < 55:
+                e8 = e8 + 1
+            if elementos[1] < 70:
+                e9 = e9 + 1
+            if elementos[1] < 85:
+                e10 = e10 + 1
+            else:
+                e11 = e11 + 1
+    e1 = e1/et
+    e2 = e2/et
+    e3 = e3/et
+    e4 = e4/et
+    e5 = e5/et
+    e6 = e6/et
+    e7 = e7/et
+    e8 = e8/et
+    e9 = e9/et
+    e10 = e10/et
+    e11 = e11/et
+    print("[0,10]: " + str(e1))
+    print("[11,24]: " + str(e2))
+    print("[25,29]: " + str(e3))
+    print("[30,34]: " + str(e4))
+    print("[35,39]: " + str(e5))
+    print("[40,44]: " + str(e6))    
+    print("[45,49]: " + str(e7))
+    print("[50,54]: " + str(e8))
+    print("[55,69]: " + str(e9))
+    print("[70,84]: " + str(e10))
+    print("[84+]: " + str(e11))
+    res = [["[0,10]: ", e1], ["[11,24]: ", e2], ["[25,29]: ", e3], ["[30,34]: ", e4], ["[35,39]: ", e5], ["[40,44]: ", e6], ["[45,49]: ", e7], ["[50,54]: ", e8], ["[55,69]: ", e9], ["[70,84]: ", e10], ["[84+]: ", e11]]
+    return res
+calcdee(ficheiro)
+def calcglu(ficheiro):
+    e1 = 0
+    e2 = 0
+    e3 = 0
+    e4 = 0
+    e5 = 0
+    e6 = 0
+    e7 = 0
+    e8 = 0
+    e9 = 0
+    e10 = 0
+    e11 = 0
+    e12 = 0
+    e13 = 0
+    e14 = 0
+    e15 = 0
+    e16 = 0
+    e17 = 0
+    e18 = 0
+    e19 = 0
+    e20 = 0
+    e21 = 0
+    et = 0
+    fbio = open(ficheiro)
+    for linhas in fbio:
+        elementos = linhas.split(",")
+        et = et + 1
+        if elementos[-1] == 1:
+            if elementos[-2] < 11:
+                e1 = e1 + 1
+            if elementos[-2] < 21:
+                e2 = e2 + 1
+            if elementos[-2] < 31:
+                e3 = e3 + 1
+            if elementos[-2] < 41:
+                e4 = e4 + 1
+            if elementos[-2] < 51:
+                e5 = e5 + 1
+            if elementos[-2] < 61:
+                e6 = e6 + 1
+            if elementos[-2] < 71:
+                e7 = e7 + 1
+            if elementos[-2] < 81:
+                e8 = e8 + 1
+            if elementos[-2] < 91:
+                e9 = e9 + 1
+            if elementos[-2] < 101:
+                e10 = e10 + 1
+            if elementos[-2] < 101:
+                e11 = e11 + 1
+            if elementos[-2] < 111:
+                e12 = e12 + 1
+            if elementos[-2] < 121:
+                e13 = e13 + 1
+            if elementos[-2] < 131:
+                e14 = e14 + 1
+            if elementos[-2] < 141:
+                e15 = e15 + 1
+            if elementos[-2] < 151:
+                e16 = e16 + 1
+            if elementos[-2] < 161:
+                e17 = e17 + 1
+            if elementos[-2] < 171:
+                e18 = e18 + 1
+            if elementos[-2] < 181:
+                e19 = e19 + 1
+            if elementos[-2] < 191:
+                e20 = e20 + 1
+            else:
+                e21 = e21 + 1
+    print("[Nível 1] " + str(e1/et))
+    print("[Nível 2] " + str(e2/et))
+    print("[Nível 3] " + str(e3/et))
+    print("[Nível 4] " + str(e4/et))
+    print("[Nível 5] " + str(e5/et))
+    print("[Nível 6] " + str(e6/et))
+    print("[Nível 7] " + str(e7/et))
+    print("[Nível 8] " + str(e8/et))
+    print("[Nível 9] " + str(e9/et))
+    print("[Nível 10] " + str(e10/et))
+    print("[Nível 11] " + str(e11/et))
+    print("[Nível 12] " + str(e12/et))
+    print("[Nível 13] " + str(e13/et))
+    print("[Nível 14] " + str(e14/et))
+    print("[Nível 15] " + str(e15/et))
+    print("[Nível 16] " + str(e16/et))
+    print("[Nível 17] " + str(e17/et))
+    print("[Nível 18] " + str(e18/et))
+    print("[Nível 19] " + str(e19/et))
+    print("[Nível 20] " + str(e20/et))
+    print("[Nível 21] " + str(e21/et))
+    return
+calcglu(ficheiro)
+def tabela(distr):
+    i = 0
+    while i < len(distr):
+        for elementos in distr:
+            print(elementos[0], str(elementos[1]))
+    return
+
+
+
