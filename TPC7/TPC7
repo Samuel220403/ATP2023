@@ -1,0 +1,146 @@
+#Aquecimento
+listpol = [[(1,7),(3.7,4),(5,3),(-88,0)],
+           [(2,2),(17,9)],
+           [(7,4),(6,3),(-1,2),(43,0)],
+           [(1,4)],
+           [(1,2)],
+           [(1,3)]]
+def poltof(listpol):
+    f = open("polinomios.txt","w")
+    for pol in listpol:
+        for mon in pol:
+                f.write(str(mon[0]) + "," + str(mon[1]) + "|")
+        f.write("\n")
+    f.close()
+    return
+poltof(listpol)
+#funcionalidades
+def polderiv(pol):
+    respol = []
+    for mon in pol:
+        coef, exp = mon
+        coef = coef * exp
+        exp -= exp
+        respol.append((coef, exp))
+    return respol
+def polsoma(p1, p2):
+    polr = []
+    for mon1 in p1:
+        for mon2 in p2:
+            if mon1[1] == mon2[1]:
+                polr.append((mon1[1] + mon2[1], mon1[0]))
+        if mon1[1] not in polr[1]:
+            polr.append((mon1[0], mon1[1]))
+    return polr
+
+import matplotlib.pyplot as plt
+def polgraf(pol):
+    plt.xlist()
+    plt.ylist()
+
+
+
+#Aplicação de polinómios
+#1 Criar polinómio
+def criaPol():
+    Pol = []
+    termo = 0
+    while termo < 1:
+        termo = int(input("Por quantos monómios é composto o polinómio?"))
+    i = 1
+    while i < termo:
+        coef = float(input("Qual é o coeficiente do termo " + str(i) + "?")) 
+        exp = int(input("Qual é o expoente do termo " + str(i) + "?")) 
+        Pol.append((coef, exp))
+        i += 1
+    return Pol
+#2 Ler lista de polinómios de um ficheiro
+def lerPol(f):
+    fpol = open(f)
+    for linhas in fpol:
+        polinomio = linhas.split("|")
+        polinomio.remove("\n")
+        for monomio in polinomio:
+            fim = monomio.split(",")
+            if fim[1] != "0":
+                    print("+ (" + str(fim[0]) + ")x^" + str(fim[1]), end=" ")
+            else:
+                if int(fim[0]) > 0:
+                    print("+" + str(fim[0]), end=" ")
+                elif int(fim[0]) < 0:
+                    print(str(fim[0]), end=" ")
+        print("\n")
+    fpol.close()
+    return
+#3 Listar polinómios
+def listarpol(listapol):
+    dicpol = {}
+    print("Ordem|Polinómio")
+    j = 1
+    for polinomios in listapol:
+        print(j, "     ", end="")
+        for monomios in polinomios:
+            coef, exp = monomios
+            if exp != 0:
+                if coef > 0:
+                    print("+" + str(coef) + "x^" + str(exp), end=" ")
+                elif coef < 0:
+                    print(str(coef) + "x^" + str(exp), end=" ")
+            else:
+                if coef > 0:
+                    print("+" + str(coef), end=" ")
+                elif coef < 0:
+                    print(str(coef), end=" ")
+        dicpol[j] = polinomios
+        j = j + 1
+        print()
+    return dicpol
+dicpol = listarpol(listpol)
+print(dicpol)
+#4 Calcular o valor de um polinómio dado x
+def calcpol(dicpol, ref, x):
+    res = 0
+    if ref in dicpol:
+        for monomios in dicpol[ref]:
+            res = res + (monomios[0] * (x ** monomios[1]))
+    return res
+#5 Listar polinómios com grau
+def listarpol(dicpol):
+    print("Ordem|Polinómio|Grau")
+    res = []
+    for polinomios in dicpol:
+        i = 0
+        print(polinomios, "    ", end="")
+        for monomios in dicpol[polinomios]:
+            coef, exp = monomios
+            if i < exp:
+                i = exp
+            if exp != 0:
+                if coef > 0:
+                    print("+" + str(coef) + "x^" + str(exp), end=" ")
+                elif coef < 0:
+                    print(str(coef) + "x^" + str(exp), end=" ")
+            else:
+                if coef > 0:
+                    print("+" + str(coef), end=" ")
+                elif coef < 0:
+                    print(str(coef), end=" ")
+        print("      ", i)
+        res.append(i)
+    print(res)
+    return res
+graus = listarpol(dicpol)
+#6 Maior grau
+def maiorgraupol(dicpol, graus):
+    i = 0
+    x = 0
+    for grau in graus:
+        if i <= grau:
+            x += 1
+            i = grau
+    for polinomios in dicpol[x]:
+        print("O polinómio de maior grau é: " )
+    print("O polinómio de maior grau é: " + str(dicpol[x]))
+    return
+maiorgraupol(dicpol, graus)
+#7 Derivada
