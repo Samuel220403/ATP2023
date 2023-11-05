@@ -1,0 +1,48 @@
+def quantosPost(redeSocial):
+    return len(redeSocial) 
+def postsAutor(redeSocial, autor):
+    res = []
+    for posts in redeSocial:
+        if autor == posts['autor']:
+            res.append(posts['conteudo'])
+    return res
+def autores(redeSocial):
+    res = []
+    for posts in redeSocial:
+        if posts['autor'] not in res:
+            res.append(posts['autor'])
+        res.sort()
+    return res 
+def insPost(redeSocial, conteudo, autor, dataCriacao, comentarios):
+    i = 1
+    for posts in redeSocial:
+        i = i + 1
+    id = 'p' + str(i)    
+    post = {'id': id,
+            'conteudo': conteudo,
+            'autor': autor,
+            'dataCriacao': dataCriacao,
+            'comentarios': comentarios}
+    redeSocial.append(post)
+    return redeSocial
+def remPost(redeSocial, id):
+    for posts in redeSocial:
+        if id == posts['id']:
+            redeSocial.pop(posts)
+    return redeSocial
+def postsPorAutor(redeSocial):
+    post = {}
+    for posts in redeSocial:
+        if posts['autor'] in post:
+            post[posts['autor']] = post[posts['autor']] + 1
+        else:
+            post[posts['autor']] = 1
+    return post
+def comentadoPor(redeSocial, autor):
+    lista = []
+    for posts in redeSocial:
+        for com in posts['comentarios']:
+            if autor == com['autor']:
+                print(str(posts['conteudo']) + "Comentado por: " + str(autor) + "Comentário: " + str(com['comentario']))
+                lista.append(posts['id'])
+    return lista
