@@ -1,0 +1,6 @@
+def ncomuns(l1, l2):
+    return [x for x in l1 if x not in l2] + [x for x in l2 if x not in l1]
+def mtl(texto):
+    return [x for x in texto.split(" ") if len(x) > 3]
+def pares(lista):
+    return [(x + 1,y) for x, y in enumerate(lista)]
