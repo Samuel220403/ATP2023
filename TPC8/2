@@ -1,0 +1,16 @@
+def produtoM3(lista):
+    res = 1
+    i1 = lista[0]
+    i2 = lista[0]
+    i3 = lista[0]
+    for numeros in lista:
+        if i1 > numeros:
+            i1 = numeros
+        if i2 > numeros and numeros != i1:
+            i2 = numeros
+        if i3 > numeros and numeros != i1 and numeros != i2:
+            i3 = numeros
+    res = i1 * i2 * i3
+    return res
+
+print(produtoM3([12,3,7,10,12,8,9]))
